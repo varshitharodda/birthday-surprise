@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Cutie ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Patrick+Hand&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #ff5b91;
+  --darkpink: #e91e63;
+  --lightpink: #fff0f5;
+  --text: #40323a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  background: #fff0f5;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+  position: relative;
+  background:
+    linear-gradient(rgba(238,166,190,.12) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(238,166,190,.12) 1px,transparent 1px),
+    linear-gradient(145deg,#ffe5ee,#fffafa,#ffdce8);
+  background-size: 32px 32px,32px 32px,auto;
+}
+
+.page {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 15px;
+  animation: appear .7s ease;
+}
+
+.page.active {
+  display: flex;
+}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(20px);}
+  to {opacity:1;transform:translateY(0);}
+}
+
+.panel {
+  width: min(100%,590px);
+  padding: 45px 30px;
+  text-align: center;
+  background: rgba(255,255,255,.94);
+  border: 1px solid #ffd5e2;
+  border-radius: 35px;
+  box-shadow: 0 20px 55px #e8759828;
+}
+
+.icon {
+  width: 115px;
+  height: 115px;
+  background: #fff0f5;
+  border-radius: 50%;
+  margin: 0 auto 25px;
+  display: grid;
+  place-items: center;
+  font-size: 55px;
+  box-shadow: 0 10px 25px #e9a5bd35;
+}
+
+h1 {
+  color: var(--darkpink);
+  font-size: clamp(34px,7vw,52px);
+  margin: 15px 0;
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: clamp(26px,5vw,36px);
+  color: #d93670;
+  margin: 15px 0;
+}
+
+.script {
+  font-family: 'Pacifico',cursive;
+  font-weight: normal;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #79636e;
+}
+
+.subtitle {
+  max-width: 430px;
+  margin: 0 auto 25px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 32px;
+  margin-top: 25px;
+  background: linear-gradient(110deg,#ff668f,#ed1680);
+  color: white;
+  border-radius: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px #f05b963d;
+  transition: .3s;
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.btn.light {
+  background: #fff0f5;
+  color: #e91e63;
+  border: 1px solid #ffc7d9;
+}
+
+/* PIN LOCK */
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.dot {
+  width: 19px;
+  height: 19px;
+  border: 1px solid #f3a9c1;
+  border-radius: 50%;
+}
+
+.dot.filled {
+  background: var(--pink);
+  box-shadow: 0 0 0 5px #ffe5ee;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3,68px);
+  justify-content: center;
+  gap: 13px;
+}
+
+.keypad button {
+  width: 68px;
+  height: 68px;
+  background: white;
+  border: 1px solid #ffd5e2;
+  border-radius: 50%;
+  color: var(--darkpink);
+  font-size: 28px;
+  box-shadow: 0 5px 12px #e8a2bb25;
+  cursor: pointer;
+}
+
+.keypad button:hover {
+  background: #ffe3ed;
+}
+
+.blank {
+  visibility: hidden;
+}
+
+.error {
+  color: #e91e63;
+  min-height: 25px;
+  margin-top: 12px;
+}
+
+/* GIFT */
+
+.gift {
+  font-size: 85px;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  50% {transform:translateY(-12px);}
+}
+
+/* PHOTOS */
+
+.hero-img {
+  width: 155px;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid white;
+  box-shadow: 0 10px 25px #d66c8b35;
+  margin-bottom: 20px;
+}
+
+.gallery,.timeline {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.photo {
+  background: white;
+  padding: 9px;
+  border: 2px solid #ffe0e9;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px #d66c8b20;
+}
+
+.photo img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.photo p {
+  font-size: 16px;
+  margin-top: 8px;
+  color: #d94d7c;
+}
+
+.date {
+  color: #e75485;
+  font-family: Pacifico,cursive;
+  margin-top: 8px;
+}
+
+/* BIRTHDAY COUNTDOWN */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 8px;
+  margin: 25px 0;
+}
+
+.stat {
+  background: #fff0f5;
+  border: 1px solid #ffd6e3;
+  border-radius: 14px;
+  padding: 13px 3px;
+}
+
+.stat strong {
+  display: block;
+  color: #e91e63;
+  font: 700 25px 'DM Sans',sans-serif;
+}
+
+.stat span {
+  color: #9b7180;
+  font-size: 12px;
+}
+
+/* FOUR PHOTOS - SIDE BY SIDE */
+
+.birthday-pics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.birthday-pic {
+    width: 100%;
+    min-width: 0;
+    background: white;
+    padding: 6px;
+    border: 2px solid #ffc8da;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px #e8759830;
+}
+
+.birthday-pic img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+/* Keep all 4 pictures in one row on mobile too */
+
+@media (max-width: 500px) {
+    .birthday-pics {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .birthday-pic {
+        padding: 3px;
+    }
+}
+
+/* FLOATING HEARTS */
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.heart {
+  position: absolute;
+  bottom: -30px;
+  animation: floatUp 6s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:500px) {
+  .panel {
+    padding: 35px 18px;
+    border-radius: 28px;
+  }
+
+  .gallery,.timeline {
+    gap: 10px;
+  }
+
+  .photo img {
+    height: 140px;
+  }
+
+  .stats {
+    gap: 4px;
+  }
+
+  .stat strong {
+    font-size: 19px;
+  }
+
+  .stat span {
+    font-size: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+<div id="hearts"></div>
+
+<!-- PAGE 1: UNLOCK -->
+
+<section class="page active" id="page1">
+<div class="panel">
+
+<div class="icon">🔐💗</div>
+
+<h1>Unlock Your Surprise</h1>
+<p>Enter the secret code to begin</p>
+</p> hint:your spcl day</p>
+
+<div class="dots" id="dots">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+
+<div class="keypad">
+<button onclick="press('1')">1</button>
+<button onclick="press('2')">2</button>
+<button onclick="press('3')">3</button>
+<button onclick="press('4')">4</button>
+<button onclick="press('5')">5</button>
+<button onclick="press('6')">6</button>
+<button onclick="press('7')">7</button>
+<button onclick="press('8')">8</button>
+<button onclick="press('9')">9</button>
+<button class="blank"></button>
+<button onclick="press('0')">0</button>
+<button onclick="erase()">⌫</button>
+</div>
+
+<div class="error" id="error"></div>
+</div>
+</section>
+
+<!-- PAGE 2: SOMETHING SPECIAL -->
+
+<section class="page" id="page2">
+<div class="panel">
+
+<div class="icon">
+<span class="gift">🎁</span>
+</div>
+
+<h2>Something Special<br>Is Waiting...</h2>
+
+<p class="subtitle">
+A little surprise made with lots of love.
+Tap the button to open it ✨
+</p>
+
+<button class="btn" onclick="go(3)">
+Open It! 💝
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 3: HAPPY BIRTHDAY CUTIE -->
+
+<section class="page" id="page3">
+<div class="panel">
+
+<img src="images/photo1.jpeg" class="hero-img" alt="Birthday photo">
+
+<p>Today is all about you 🌸</p>
+
+<h1 class="script">Happy Birthday, Cindhuuuu!</h1>
+
+<p class="subtitle">
+Happy birthday! Wishing you a day filled with love, laughter, 
+and your favorite things.May your smile always shine brighter! 🌸
+</p>
+
+<div style="font-size:30px">🎂 🎈 🎉 💗</div>
+
+<button class="btn" onclick="go(4)">
+Next Surprise →
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 4: FAVOURITE PERSON -->
+
+<section class="page" id="page4">
+<div class="panel">
+
+<div class="icon">🐻🎂</div>
+
+<h1 class="script">Happy Birthday!</h1>
+
+<h2>To My Favourite Person ❤️</h2>
+
+<p class="subtitle">
+I hope this year brings you everything you've been wishing for and so much more.
+Thank you for making my days happier, my bad days easier, and my life a little more beautiful just by being you.
+</p>
+
+<button class="btn" onclick="go(5)">
+Let's Explore →
+</button>
+
+</div>
+</section>
+
+
+<!-- PAGE 5: HER BEAUTIFUL GROWING JOURNEY -->
+
+<section class="page" id="page5">
+<div class="birthday-page">
+
+    <h1 class="birthday-title">
+        🎉 Happy Birthday! 🎉
+    </h1>
+
+    <div class="stats">
+        <div class="stat">
+            <strong id="years">--</strong>
+            <span>Years</span>
+        </div>
+
+        <div class="stat">
+            <strong id="months">--</strong>
+            <span>Months</span>
+        </div>
+
+        <div class="stat">
+            <strong id="weeks">--</strong>
+            <span>Weeks</span>
+        </div>
+
+        <div class="stat">
+            <strong id="days">--</strong>
+            <span>Days</span>
+        </div>
+
+        <div class="stat">
+            <strong id="hours">--</strong>
+            <span>Hours</span>
+        </div>
+    </div>
+
+    <h2 class="growing-title">
+        🌸 Look How Much You've Grown! 🌸
+    </h2>
+
+    <!-- HER GROWING JOURNEY -->
+
+    <div class="birthday-pics">
+
+        <div class="birthday-pic">
+            <img src="images/photo11.jpeg" alt="Baby memories">
+            <h3>Little Baby 👶</h3>
+            <p>Where it all began...</p>
+        </div>
+
+        <div class="birthday-pic">
+            <img src="images/photo12.jpeg" alt="Childhood memories">
+            <h3>Little Princess 🌷</h3>
+            <p>Full of innocence...</p>
+        </div>
+
+        <div class="birthday-pic">
+            <img src="images/photo13.jpeg" alt="Growing up">
+            <h3>Growing Up 🦋</h3>
+            <p>Beautiful memories...</p>
+        </div>
+
+        <div class="birthday-pic">
+            <img src="images/photo14.jpeg" alt="Present day">
+            <h3>Beautiful You 💗</h3>
+            <p>Look at you now!</p>
+        </div>
+
+    </div>
+
+    <!-- EMOTIONAL QUOTE -->
+
+    <div class="birthday-quote">
+
+        <span>💗</span>
+
+        <p>
+            From a tiny little baby to the beautiful soul
+            you are today...
+            <br>
+            Every stage of your life has been special.
+            Watching you grow into this amazing person
+            is the sweetest story ever.
+            <br>
+            <strong>Never stop smiling, shining and being YOU! ✨</strong>
+        </p>
+
+        <span>🌸</span>
+
+    </div>
+
+    <!-- CENTER BUTTON -->
+
+    <div class="explore-container">
+        <button class="btn" onclick="go(6)">
+            Explore MOre  Memories →
+        </button>
+    </div>
+
+</div>
+</section>
+
+
+
+<!-- PAGE 6: MEMORIES -->
+
+<section class="page" id="page6">
+<div class="panel">
+
+<h1 class="script">Memories 📸</h1>
+
+<p>Some moments deserve to be kept forever 💗</p>
+
+<div class="gallery">
+
+<div class="photo">
+<img src="images/photo2.jpeg" alt="Memory 1">
+<p>Beautiful  ❤️</p>
+</div>
+
+<div class="photo">
+<img src="images/photo3.jpeg" alt="Memory 2">
+<p>Sweet  🌸</p>
+</div>
+
+<div class="photo">
+<img src="images/photo4.jpeg" alt="Memory 3">
+<p>cutieeee 💕</p>
+</div>
+
+<div class="photo">
+<img src="images/photo5.jpeg" alt="Memory 4">
+<p>Favourite ✨</p>
+</div>
+
+</div>
+
+<button class="btn" onclick="go(7)">
+Next Surprise →
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 7: BEST FRIEND -->
+
+<section class="page" id="page7">
+<div class="panel">
+
+<div class="icon">🥹💖</div>
+
+<h1>The Cutest Best Friend.. 🥰</h1>
+
+<p class="subtitle">
+You're the most adorable human!
+
+Thank you for all the laughs, happiness and beautiful memories.
+You make life extra special just by being you. 💗
+</p>
+
+<img src="images/photo6.jpeg" class="hero-img" alt="Best friend">
+
+<button class="btn" onclick="go(8)">
+Click to Enter Our World →
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 8: BEAUTIFUL JOURNEY -->
+
+<section class="page" id="page8">
+<div class="panel">
+
+<h1 class="script">Our Beautiful Journey Together</h1>
+
+<p>
+Every moment spent with you has been magical.
+Let's cherish these precious memories forever.
+</p>
+
+<div class="timeline">
+
+<div class="photo">
+<img src="images/photo7.jpeg" alt="Journey 1">
+<p>Our first beautiful memory 💗</p>
+</div>
+
+<div class="photo">
+<img src="images/photo8.jpeg" alt="Journey 2">
+<p>A beautiful beginning 🌸</p>
+</div>
+
+<div class="photo">
+<img src="images/photo9.jpeg" alt="Journey 3">
+<p>Our cute little moments 🥰</p>
+</div>
+
+<div class="photo">
+<img src="images/photo10.jpeg" alt="Journey 4">
+<p>Memories to keep forever ❤️</p>
+</div>
+
+</div>
+
+<button class="btn" onclick="go(9)">
+One Last Surprise →
+</button>
+
+</div>
+</section>
+
+<!-- PAGE 9: THANK YOU -->
+
+<section class="page" id="page9">
+<div class="panel">
+
+<div class="icon">💗</div>
+
+<h1 class="script">Thank You for the Memories</h1>
+
+<p class="subtitle">
+Every laugh, every tear, every moment spent together has been a precious gift.
+
+Thank you for sharing these magical moments with me.
+
+May your path always be filled with joy, love and endless possibilities. ✨
+</p>
+
+<button class="btn light" onclick="go(1)">
+Replay Our Memories ↻
+</button>
+
+</div>
+</section>
+
+</div>
+
+<!-- BACKGROUND BIRTHDAY MUSIC -->
+
+<audio id="music" loop preload="auto">
+    <source src="Audio/birthday-song.mp3"type="audio/mpeg">
+</audio>
+
+<script>
+
+// CUSTOMIZE YOUR SECRET PIN
+const SECRET_PIN = "1312";
+
+// ENTER HER DATE OF BIRTH (YYYY-MM-DD)
+const BIRTH_DATE = "2004-12-13";
+
+let pin = "";
+let currentPage = 1;
+
+function updateDots() {
+  document.querySelectorAll(".dot").forEach((dot,i) => {
+    dot.classList.toggle("filled",i < pin.length);
+  });
+}
+
+function press(number) {
+  if(pin.length >= 4) return;
+
+  pin += number;
+  updateDots();
+
+  if(pin.length === 4) {
+    if(pin === SECRET_PIN) {
+      document.getElementById("error").textContent = "";
+      go(2);
+
+      document.getElementById("music").play().catch(()=>{});
+
+      createHearts();
+    } else {
+      document.getElementById("error").textContent =
+        "Wrong code! Try again 💗";
+
+      setTimeout(()=>{
+        pin = "";
+        updateDots();
+      },700);
+    }
+  }
+}
+
+function erase() {
+  pin = pin.slice(0,-1);
+  updateDots();
+  document.getElementById("error").textContent = "";
+}
+
+function go(number) {
+
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page"+number).classList.add("active");
+
+  currentPage = number;
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  if(number === 5) {
+    updateAge();
+  }
+
+  createHearts();
+}
+
+// AGE CALCULATION
+
+function updateAge() {
+
+  const birth = new Date(BIRTH_DATE+"T00:00:00");
+  const now = new Date();
+
+  if(isNaN(birth.getTime()) || birth > now) return;
+
+  let years = now.getFullYear() - birth.getFullYear();
+
+  let anniversary = new Date(birth);
+  anniversary.setFullYear(birth.getFullYear()+years);
+
+  if(anniversary > now) years--;
+
+  let monthStart = new Date(birth);
+  monthStart.setFullYear(birth.getFullYear()+years);
+
+  let months =
+    (now.getFullYear()-monthStart.getFullYear())*12 +
+    now.getMonth()-monthStart.getMonth();
+
+  let monthDate = new Date(monthStart);
+  monthDate.setMonth(monthStart.getMonth()+months);
+
+  if(monthDate > now) months--;
+
+  const elapsed = now-birth;
+
+  document.getElementById("years").textContent = years;
+  document.getElementById("months").textContent = months;
+  document.getElementById("weeks").textContent =
+    Math.floor(elapsed/604800000);
+  document.getElementById("days").textContent =
+    Math.floor(elapsed/86400000);
+  document.getElementById("hours").textContent =
+    Math.floor(elapsed/3600000);
+}
+
+// FLOATING HEART ANIMATION
+
+function createHearts() {
+
+  const holder = document.getElementById("hearts");
+
+  const symbols = ["💗","💕","🌸","✨","💖"];
+
+  for(let i=0;i<12;i++) {
+
+    const heart = document.createElement("span");
+
+    heart.className = "heart";
+
+    heart.textContent =
+      symbols[Math.floor(Math.random()*symbols.length)];
+
+    heart.style.left = Math.random()*100+"%";
+
+    heart.style.fontSize =
+      (16+Math.random()*20)+"px";
+
+    heart.style.animationDuration =
+      (4+Math.random()*4)+"s";
+
+    holder.appendChild(heart);
+
+    setTimeout(()=>{
+      heart.remove();
+    },8500);
+  }
+}
+
+</script>
+
+</body>
+</html>
